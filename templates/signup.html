@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='signup_style.css') }}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <h1>Sign Up</h1>
+    
+    <form method="POST" action="/signup">
+        <img  src="{{ url_for('static', filename='logo2.png') }}" alt="Logo" class="logo2">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if signup_successful %}
+            <p class="success">Sign up successful!</p>
+        {% endif %}
+        
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <p>Already have an account? <a href="/login">Log in</a></p>
+</body>
+</html>
